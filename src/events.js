@@ -45,17 +45,17 @@ fn.extend({
         var t = e.target;
 
         if (matches(t, delegate)) {
-          originalCallback.call(t);
+          originalCallback.call(t, e);
         } else {
           while (!matches(t, delegate)) {
-            if (t === this) {
+            if (t === document.documentElement) {
               return (t = false);
             }
             t = t.parentNode;
           }
 
           if (t) {
-            originalCallback.call(t);
+            originalCallback.call(t, e);
           }
         }
       };
